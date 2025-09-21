@@ -15,12 +15,12 @@ SELECT p.participant_code, 'Protocol Deviation' AS issue, d.deviation_date
 FROM Participants p
 JOIN ProtocolDeviations d ON p.participant_id = d.participant_id;
 
--- 3.Severe adverse events (grade ≥3) in last 30 days
+-- Severe adverse events (grade ≥3) in last 30 days
 SELECT p.participant_code, ae.severity, ae.description, ae.onset_date
 FROM AdverseEvents ae
 JOIN Participants p ON ae.participant_id = p.participant_id
 WHERE ae.severity >= 3
-  AND ae.onset_date >= DATEADD(DAY, -30, GETDATE());
+  AND ae.onset_date >= CAST(DATEADD(DAY, -30, GETDATE()) AS DATE);
 
  -- 4.Lab value trends for a participant across visits (P001 example)
 SELECT v.visit_date, l.test_name, l.result_value
