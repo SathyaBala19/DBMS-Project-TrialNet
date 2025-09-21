@@ -21,3 +21,19 @@ SELECT v.visit_id, 'HB', 'Hemoglobin', 13.5, 'g/dL', v.visit_date
 FROM Visits v
 JOIN Participants p ON v.participant_id = p.participant_id
 WHERE p.participant_code = 'P001';
+
+-- Insert Glucose result for all participants
+INSERT INTO Labs (visit_id, test_code, test_name, result_value, unit, result_date)
+SELECT v.visit_id, 'GLU', 'Glucose', 100 + v.visit_id * 2, 'mg/dL', v.visit_date
+FROM Visits v
+WHERE v.visit_id NOT IN (
+    SELECT visit_id FROM Labs WHERE test_code = 'GLU'
+);
+
+-- Insert Hemoglobin result for all participants
+INSERT INTO Labs (visit_id, test_code, test_name, result_value, unit, result_date)
+SELECT v.visit_id, 'HB', 'Hemoglobin', 12 + v.visit_id * 0.5, 'g/dL', v.visit_date
+FROM Visits v
+WHERE v.visit_id NOT IN (
+    SELECT visit_id FROM Labs WHERE test_code = 'HB'
+);
