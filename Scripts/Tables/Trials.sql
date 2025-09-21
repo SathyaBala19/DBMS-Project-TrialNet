@@ -12,4 +12,7 @@ VALUES
 ('TrialNet Immunotherapy Study', 'III', '2025-03-01', '2027-06-30'),
 ('TrialNet Early Screening Study', 'I', '2024-09-01', '2025-09-01');
 
-SELECT * FROM Trials;
+-- SELECT * FROM Trials;
+
+-- DELETE FROM Trials;
+-- DBCC CHECKIDENT ('Trials', RESEED, 0);
