@@ -37,3 +37,9 @@ FROM Visits v
 WHERE v.visit_id NOT IN (
     SELECT visit_id FROM Labs WHERE test_code = 'HB'
 );
+
+INSERT INTO Visits (participant_id, trial_id, visit_date, visit_type, window_start, window_end, status)
+SELECT p.participant_id, p.trial_id, '2025-02-05', 'Baseline', '2025-02-01', '2025-02-10', 'COMPLETED'
+FROM Participants p
+WHERE p.participant_code = 'P001'
+  AND p.participant_id NOT IN (SELECT participant_id FROM Visits);
