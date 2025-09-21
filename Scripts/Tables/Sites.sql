@@ -14,7 +14,7 @@ VALUES
 (2, 'Site D', 'Berlin, Germany', 'Dr. Muller'),
 (3, 'Site E', 'Tokyo, Japan', 'Dr. Tanaka');
 
-SELECT * FROM Sites;
+-- SELECT * FROM Sites;
 
 -- DELETE FROM Sites;
 -- DBCC CHECKIDENT ('Sites', RESEED, 0);
