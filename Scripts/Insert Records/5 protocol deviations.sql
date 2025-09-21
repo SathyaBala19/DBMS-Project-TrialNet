@@ -29,3 +29,13 @@ SELECT v.participant_id, v.visit_id,
 FROM Participants p
 JOIN Visits v ON p.participant_id = v.participant_id
 WHERE p.participant_id NOT IN (SELECT participant_id FROM ProtocolDeviations);
+
+-- Ensure every participant with a visit has at least one deviation
+INSERT INTO ProtocolDeviations (participant_id, visit_id, deviation_type, description, deviation_date)
+SELECT v.participant_id, v.visit_id,
+       CASE WHEN v.visit_id % 2 = 0 THEN 'Late Visit' ELSE 'Missed Procedure' END,
+       'Deviation auto-added for ' + p.participant_code,
+       DATEADD(DAY, 2, v.visit_date)
+FROM Participants p
+JOIN Visits v ON p.participant_id = v.participant_id
+WHERE p.participant_id NOT IN (SELECT participant_id FROM ProtocolDeviations);
