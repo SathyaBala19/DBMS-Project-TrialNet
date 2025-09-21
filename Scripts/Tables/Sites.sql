@@ -18,4 +18,3 @@ VALUES
 
 -- DELETE FROM Sites;
 -- DBCC CHECKIDENT ('Sites', RESEED, 0);
-
