@@ -18,3 +18,4 @@ SELECT * FROM Sites;
 
 -- DELETE FROM Sites;
 -- DBCC CHECKIDENT ('Sites', RESEED, 0);
+
