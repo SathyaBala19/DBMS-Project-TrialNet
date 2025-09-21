@@ -29,11 +29,3 @@ JOIN Visits v ON l.visit_id = v.visit_id
 JOIN Participants p ON v.participant_id = p.participant_id
 WHERE p.participant_code = 'P001'
 ORDER BY v.visit_date;
-
-SELECT p.participant_code, COUNT(l.lab_id) AS lab_count
-FROM Participants p
-JOIN Visits v ON p.participant_id = v.participant_id
-LEFT JOIN Labs l ON v.visit_id = l.visit_id
-WHERE p.participant_code BETWEEN 'P001' AND 'P010'
-GROUP BY p.participant_code
-ORDER BY p.participant_code;
