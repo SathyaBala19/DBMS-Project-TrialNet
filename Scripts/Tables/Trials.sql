@@ -6,4 +6,4 @@ CREATE TABLE Trials (
     end_date DATE
 );
 
-SELECT * FROM Trials;
+-- SELECT * FROM Trials;
