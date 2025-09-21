@@ -23,14 +23,3 @@ VALUES
 (2, 3, 3, 'P008', '1993-06-05', 'Female', 'Enrolled', 1),
 (2, 4, 4, 'P009', '1982-02-12', 'Male', 'Screened', 1),
 (3, 5, 5, 'P010', '1999-08-22', 'Female', 'Enrolled', 1);
-
-SELECT * FROM Participants;
-
--- Drop the Participants table
--- DROP TABLE Participants;
-
--- Drop Sites and Consents (if created without references)
--- DROP TABLE Sites;
--- DROP TABLE Consents;
-
--- (Keep Trials if already correct, otherwise drop and recreate)
